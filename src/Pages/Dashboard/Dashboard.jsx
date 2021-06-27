@@ -2,8 +2,18 @@
 
 import React from 'react'
 import styles from './Dashboard.module.css'
+import { useAuthDispatch, logout, useAuthState } from '../../Context'
 
 function Dashboard(props) {
+
+    const dispath = useAuthDispatch();
+    const userDetails = useAuthState();
+
+    const handleLogout = () => {
+        logout(dispath)
+
+        props.history.push('/login');
+    }
    
     return (
         <div style={{ padding: 10 }}>
@@ -11,9 +21,9 @@ function Dashboard(props) {
                 <h1>
                     Dashboard
                 </h1>
-                <button className={styles.logoutBtn} >Logout</button>
+                <button className={styles.logoutBtn} onClick={handleLogout}>Logout</button>
             </div>
-            <p>Welcome to the dashboard</p>
+            <p>Welcome {userDetails.user.email}</p>
         </div>
     )
 }

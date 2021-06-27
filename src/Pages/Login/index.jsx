@@ -38,11 +38,11 @@ function Login(props) {
           <div className={styles.loginForm}>
             <div className={styles.loginFormItem}>
               <label htmlFor='email'>Username</label>
-              <input type='text' id='email' value={email} onChange={ (e) => { setEmail(e.target.value) } }/>
+              <input type='text' id='email' value={email} onChange={ (e) => { setEmail(e.target.value) } } disabled={loading}/>
             </div>
             <div className={styles.loginFormItem}>
               <label htmlFor='password'>Password</label>
-              <input type='password' id='password' value={password} onChange={ (e) => { setPassword(e.target.value)} }  />
+              <input type='password' id='password' value={password} onChange={ (e) => { setPassword(e.target.value)} }  disabled={loading}/>
             </div>
           </div>
           <button onClick={handleLogin}>login</button>
